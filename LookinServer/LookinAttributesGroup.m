@@ -21,13 +21,15 @@
 #pragma mark - <NSCopying>
 - (NSDictionary *)toJson {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    
+    NSLog(@"***userCustomTitle");
     if (self.userCustomTitle) {
         dict[@"userCustomTitle"] = self.userCustomTitle;
     }
+    NSLog(@"***identifier");
     if (self.identifier) {
         dict[@"identifier"] = self.identifier;
     }
+    NSLog(@"***attrSections");
 
     if (self.attrSections) {
         NSMutableArray *sectArray = [NSMutableArray array];

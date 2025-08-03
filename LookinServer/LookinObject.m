@@ -24,9 +24,10 @@
     // if (self.oid) {
     //     dict[@"oid"] = self.oid;
     // }
-    if (self.memoryAddress) {
-        dict[@"memoryAddress"] = self.memoryAddress;
-    }
+    // 内存地址 不需要
+    // if (self.memoryAddress) {
+    //     dict[@"memoryAddress"] = self.memoryAddress;
+    // }
     if (self.specialTrace) {
         dict[@"specialTrace"] = self.specialTrace;
     }

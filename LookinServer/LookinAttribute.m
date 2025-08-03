@@ -28,12 +28,13 @@
     // if (self.attrType) {
     //     dict[@"attrType"] = self.attrType;
     // }
-    if (self.value) {
-        dict[@"value"] = self.value;
-    }
-    if (self.extraValue) {
-        dict[@"extraValue"] = self.extraValue;
-    }
+    // if (self.value) {
+    //     dict[@"value"] = self.value;
+    // }
+    // if (self.extraValue) {
+    //     dict[@"extraValue"] = self.extraValue;
+    // }
+    [self setRealValue:dict];
     if (self.customSetterID) {
         dict[@"customSetterID"] = self.customSetterID;
     }
@@ -46,6 +47,36 @@
     // }
     
     return [dict copy];
+}
+- (void)setRealValue:(NSMutableDictionary *)dict {
+    switch (self.attrType) {
+        case LookinAttrTypeEnumString:
+        case LookinAttrTypeNSString: {
+            if (self.value) {
+                NSString *newValue = self.value;
+                dict[@"value"] = newValue;
+            }
+            if (self.extraValue) {
+                NSString *newValue = self.extraValue;
+                dict[@"extraValue"] = newValue;
+            }
+            return;
+        }
+        case LookinAttrTypeBOOL: 
+        case LookinAttrTypeDouble: {
+            if (self.value) {
+                NSNumber *newValue = self.value;
+                dict[@"value"] = newValue;
+            }
+            if (self.extraValue) {
+                NSNumber *newValue = self.extraValue;
+                dict[@"extraValue"] = newValue;
+            }
+            return;
+        }      
+        default:
+            return;
+    }
 }
 - (id)copyWithZone:(NSZone *)zone {
     LookinAttribute *newAttr = [[LookinAttribute allocWithZone:zone] init];

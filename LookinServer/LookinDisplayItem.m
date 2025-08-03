@@ -88,7 +88,7 @@
         dict[@"attributesGroupList"] = attrArray;
     }
 
-    if(self.attributesGroupList){
+    if(self.customAttrGroupList){
         NSMutableArray *attrArray = [NSMutableArray array];
         for (LookinAttributesGroup *attr in self.customAttrGroupList) {
             [attrArray addObject:[attr toJson]]; // 递归调用 toJson

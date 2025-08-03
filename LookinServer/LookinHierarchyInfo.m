@@ -37,7 +37,7 @@
     
     LookinHierarchyInfo *info = [LookinHierarchyInfo new];
     // info.serverVersion = LOOKIN_SERVER_VERSION;
-    info.displayItems = [LKS_HierarchyDisplayItemsMaker itemsWithScreenshots:NO attrList:NO lowImageQuality:NO readCustomInfo:readCustomInfo saveCustomSetter:YES];
+    info.displayItems = [LKS_HierarchyDisplayItemsMaker itemsWithScreenshots:NO attrList:YES lowImageQuality:NO readCustomInfo:readCustomInfo saveCustomSetter:YES];
     // info.appInfo = [LookinAppInfo currentInfoWithScreenshot:NO icon:YES localIdentifiers:nil];
     info.collapsedClassList = [LKSConfigManager collapsedClassList];
     // info.colorAlias = [LKSConfigManager colorAlias];
