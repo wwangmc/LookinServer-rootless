@@ -20,10 +20,10 @@
         
             // 2.2 遍历转换数据
             for (LookinDisplayItem *item in info.displayItems) {
-                // NSDictionary *itemDict = [item toDictionary];
-                // if (itemDict) {
-                //     [itemsArray addObject:itemDict];
-                // }
+                NSDictionary *itemDict = [item toJson];
+                if (itemDict) {
+                    [itemsArray addObject:itemDict];
+                }
             }
             
             // 2.3 构建JSON

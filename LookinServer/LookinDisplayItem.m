@@ -39,7 +39,73 @@
 @implementation LookinDisplayItem
 
 #pragma mark - <NSCopying>
+- (NSDictionary *)toJson {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (self.customDisplayTitle) {
+        dict[@"customDisplayTitle"] = self.customDisplayTitle;
+    }
+    // if (self.representedAsKeyWindow) {
+    //     dict[@"representedAsKeyWindow"] = self.representedAsKeyWindow;
+    // }
+    if (!CGRectIsEmpty(self.frame)) {
+        dict[@"frame"] = @{
+            @"x": @(self.frame.origin.x),
+            @"y": @(self.frame.origin.y),
+            @"width": @(self.frame.size.width),
+            @"height": @(self.frame.size.height)
+        };
+    }
+    if (!CGRectIsEmpty(self.bounds)) {
+        dict[@"bounds"] = @{
+            @"x": @(self.bounds.origin.x),
+            @"y": @(self.bounds.origin.y),
+            @"width": @(self.bounds.size.width),
+            @"height": @(self.bounds.size.height)
+        };
+    }
 
+    if(self.viewObject){
+        dict[@"viewObject"] = [self.viewObject toJson];
+    }
+
+    if(self.layerObject){
+        dict[@"layerObject"] = [self.layerObject toJson];
+    }
+    if(self.hostViewControllerObject){
+        dict[@"hostViewControllerObject"] = [self.hostViewControllerObject toJson];
+    }
+
+    if(self.hostViewControllerObject){
+        dict[@"hostViewControllerObject"] = [self.hostViewControllerObject toJson];
+    }
+    
+    if(self.attributesGroupList){
+        NSMutableArray *attrArray = [NSMutableArray array];
+        for (LookinAttributesGroup *attr in self.attributesGroupList) {
+            [attrArray addObject:[attr toJson]]; // 递归调用 toJson
+        }
+        dict[@"attributesGroupList"] = attrArray;
+    }
+
+    if(self.attributesGroupList){
+        NSMutableArray *attrArray = [NSMutableArray array];
+        for (LookinAttributesGroup *attr in self.customAttrGroupList) {
+            [attrArray addObject:[attr toJson]]; // 递归调用 toJson
+        }
+        dict[@"customAttrGroupList"] = attrArray;
+    }
+
+    if (self.isExpandable && self.subitems) {
+        NSMutableArray *itemArray = [NSMutableArray array];
+        for (LookinDisplayItem *item in self.subitems) {
+            [itemArray addObject:[item toJson]]; // 递归调用 toJson
+        }
+        dict[@"subitems"] = itemArray;
+    }
+    
+    return [dict copy];
+}
 - (id)copyWithZone:(NSZone *)zone {
     LookinDisplayItem *newDisplayItem = [[LookinDisplayItem allocWithZone:zone] init];
     newDisplayItem.subitems = [self.subitems lookin_map:^id(NSUInteger idx, LookinDisplayItem *value) {

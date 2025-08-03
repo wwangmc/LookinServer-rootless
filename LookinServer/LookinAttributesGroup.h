@@ -36,6 +36,7 @@
 
 - (BOOL)isUserCustom;
 
+- (NSDictionary *)toJson;
 @end
 
 

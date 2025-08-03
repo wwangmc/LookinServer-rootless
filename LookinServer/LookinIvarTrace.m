@@ -16,6 +16,36 @@ NSString *const LookinIvarTraceRelationValue_Self = @"self";
 
 #pragma mark - Equal
 
+- (NSDictionary *)toJson {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    // 如果 relation 存在，则添加到字典
+    if (self.relation) {
+        dict[@"relation"] = self.relation;
+    }
+    
+    // 如果 hostClassName 存在，则添加到字典
+    if (self.hostClassName) {
+        dict[@"hostClassName"] = self.hostClassName;
+    }
+    
+    // 如果 ivarName 存在，则添加到字典
+    if (self.ivarName) {
+        dict[@"ivarName"] = self.ivarName;
+    }
+    // 子节点 可能死循环 TODO
+    // if (self.ivarTraces) {
+    //     NSMutableArray *tracesArray = [NSMutableArray array];
+    //     for (LookinIvarTrace *trace in self.ivarTraces) {
+    //         [tracesArray addObject:[trace toJson]]; // 递归调用 toJson
+    //     }
+    //     dict[@"ivarTraces"] = tracesArray;
+    // }
+    
+    // 返回不可变字典
+    return [dict copy];
+}
+
 - (NSUInteger)hash {
     return self.hostClassName.hash ^ self.ivarName.hash;
 }

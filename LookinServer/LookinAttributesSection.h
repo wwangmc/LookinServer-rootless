@@ -29,7 +29,7 @@ typedef NS_ENUM (NSInteger, LookinAttributesSectionStyle) {
 @property(nonatomic, copy) NSArray<LookinAttribute *> *attributes;
 
 - (BOOL)isUserCustom;
-
+- (NSDictionary *)toJson;
 @end
 
 

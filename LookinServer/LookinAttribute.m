@@ -16,7 +16,37 @@
 @implementation LookinAttribute
 
 #pragma mark - <NSCopying>
-
+- (NSDictionary *)toJson {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (self.identifier) {
+        dict[@"identifier"] = self.identifier;
+    }
+    if (self.displayTitle) {
+        dict[@"displayTitle"] = self.displayTitle;
+    }
+    // if (self.attrType) {
+    //     dict[@"attrType"] = self.attrType;
+    // }
+    if (self.value) {
+        dict[@"value"] = self.value;
+    }
+    if (self.extraValue) {
+        dict[@"extraValue"] = self.extraValue;
+    }
+    if (self.customSetterID) {
+        dict[@"customSetterID"] = self.customSetterID;
+    }
+    // if (self.ivarTraces) {
+    //     NSMutableArray *tracesArray = [NSMutableArray array];
+    //     for (LookinIvarTrace *trace in self.ivarTraces) {
+    //         [tracesArray addObject:[trace toJson]]; // 递归调用 toJson
+    //     }
+    //     dict[@"ivarTraces"] = tracesArray;
+    // }
+    
+    return [dict copy];
+}
 - (id)copyWithZone:(NSZone *)zone {
     LookinAttribute *newAttr = [[LookinAttribute allocWithZone:zone] init];
     newAttr.identifier = self.identifier;

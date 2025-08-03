@@ -15,6 +15,7 @@
 @class LookinDisplayItem;
 
 @interface LookinAttribute : NSObject <NSSecureCoding, NSCopying>
+- (NSDictionary *)toJson;
 
 @property(nonatomic, copy) LookinAttrIdentifier identifier;
 

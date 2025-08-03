@@ -37,6 +37,8 @@
 /// 在 Lookin 的展示中，绝大多数情况下应该使用 lk_demangledSwiftName
 - (NSString *)rawClassName;
 
+- (NSDictionary *)toJson;
+
 @end
 
 

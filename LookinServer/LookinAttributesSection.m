@@ -18,7 +18,24 @@
 @implementation LookinAttributesSection
 
 #pragma mark - <NSCopying>
+- (NSDictionary *)toJson {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (self.identifier) {
+        dict[@"identifier"] = self.identifier;
+    }
 
+    
+    if (self.attributes) {
+        NSMutableArray *attrArray = [NSMutableArray array];
+        for (LookinAttribute *attr in self.attributes) {
+            [attrArray addObject:[attr toJson]]; // 递归调用 toJson
+        }
+        dict[@"attrArray"] = attrArray;
+    }
+    
+    return [dict copy];
+}
 - (id)copyWithZone:(NSZone *)zone {
     LookinAttributesSection *newSection = [[LookinAttributesSection allocWithZone:zone] init];
     newSection.identifier = self.identifier;

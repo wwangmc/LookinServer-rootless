@@ -19,7 +19,26 @@
 @implementation LookinAttributesGroup
 
 #pragma mark - <NSCopying>
+- (NSDictionary *)toJson {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (self.userCustomTitle) {
+        dict[@"userCustomTitle"] = self.userCustomTitle;
+    }
+    if (self.identifier) {
+        dict[@"identifier"] = self.identifier;
+    }
 
+    if (self.attrSections) {
+        NSMutableArray *sectArray = [NSMutableArray array];
+        for (LookinAttributesSection *sect in self.attrSections) {
+            [sectArray addObject:[sect toJson]]; // 递归调用 toJson
+        }
+        dict[@"attrSections"] = sectArray;
+    }
+    
+    return [dict copy];
+}
 - (id)copyWithZone:(NSZone *)zone {
     LookinAttributesGroup *newGroup = [[LookinAttributesGroup allocWithZone:zone] init];
     newGroup.userCustomTitle = self.userCustomTitle;

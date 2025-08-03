@@ -181,6 +181,7 @@ typedef NS_ENUM(NSUInteger, LookinDisplayItemProperty) {
 /// 因为搜索而应该被高亮的字符串
 @property(nonatomic, copy) NSString *highlightedSearchString;
 
+- (NSDictionary *)toJson;
 @end
 
 

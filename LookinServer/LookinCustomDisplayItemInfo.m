@@ -13,7 +13,27 @@
 #endif
 
 @implementation LookinCustomDisplayItemInfo
+- (NSDictionary *)toJson {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (self.frameInWindow) {
+        dict[@"frameInWindow"] = self.frameInWindow;
+    }
+    
+    if (self.title) {
+        dict[@"title"] = self.title;
+    }
+    
+    if (self.danceuiSource) {
+        dict[@"danceuiSource"] = self.danceuiSource;
+    }
 
+    if (self.subtitle) {
+        dict[@"subtitle"] = self.subtitle;
+    }
+    // 返回不可变字典
+    return [dict copy];
+}
 - (id)copyWithZone:(NSZone *)zone {
     LookinCustomDisplayItemInfo *newInstance = [[LookinCustomDisplayItemInfo allocWithZone:zone] init];
     

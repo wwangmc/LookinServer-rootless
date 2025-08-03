@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface LookinCustomDisplayItemInfo : NSObject <NSSecureCoding, NSCopying>
-
+- (NSDictionary *)toJson;
 /// 该属性可能有值（CGRect）也可能是 nil（nil 时则表示无图像）
 @property(nonatomic, strong) NSValue *frameInWindow;
 @property(nonatomic, copy) NSString *title;

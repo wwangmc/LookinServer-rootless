@@ -18,7 +18,36 @@
 #endif
 
 @implementation LookinObject
+- (NSDictionary *)toJson {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    // TODO
+    // if (self.oid) {
+    //     dict[@"oid"] = self.oid;
+    // }
+    if (self.memoryAddress) {
+        dict[@"memoryAddress"] = self.memoryAddress;
+    }
+    if (self.specialTrace) {
+        dict[@"specialTrace"] = self.specialTrace;
+    }
 
+    if (self.specialTrace) {
+        dict[@"specialTrace"] = self.specialTrace;
+    }
+    // TODO
+    if (self.classChainList) {
+        dict[@"classChainList"] = self.classChainList;
+    }
+    if (self.ivarTraces) {
+        NSMutableArray *tracesArray = [NSMutableArray array];
+        for (LookinIvarTrace *trace in self.ivarTraces) {
+            [tracesArray addObject:[trace toJson]]; // 递归调用 toJson
+        }
+        dict[@"ivarTraces"] = tracesArray;
+    }
+    
+    return [dict copy];
+}
 #if TARGET_OS_IPHONE
 + (instancetype)instanceWithObject:(NSObject *)object {
     LookinObject *lookinObj = [LookinObject new];
