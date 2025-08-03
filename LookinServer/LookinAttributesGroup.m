@@ -31,9 +31,14 @@
     if (self.attrSections) {
         NSMutableArray *sectArray = [NSMutableArray array];
         for (LookinAttributesSection *sect in self.attrSections) {
-            [sectArray addObject:[sect toJson]]; // 递归调用 toJson
+            NSDictionary * sectJson = [sect toJson];
+            if(!IsEmptyDict(sectJson)){
+                [sectArray addObject: sectJson]; // 递归调用 toJson
+            }
         }
-        dict[@"attrSections"] = sectArray;
+        if(!IsEmptyArray(sectArray)){
+            dict[@"attrSections"] = sectArray;
+        }
     }
     
     return [dict copy];

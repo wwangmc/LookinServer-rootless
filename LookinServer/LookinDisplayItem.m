@@ -83,9 +83,14 @@
     if(self.attributesGroupList){
         NSMutableArray *attrArray = [NSMutableArray array];
         for (LookinAttributesGroup *attr in self.attributesGroupList) {
-            [attrArray addObject:[attr toJson]]; // 递归调用 toJson
+            NSDictionary * attrJson = [attr toJson];
+            if(!IsEmptyDict(attrJson)){
+                [attrArray addObject:attrJson];
+            }
         }
-        dict[@"attributesGroupList"] = attrArray;
+        if(!IsEmptyArray(attrArray)){
+            dict[@"attributesGroupList"] = attrArray;
+        }
     }
 
     if(self.customAttrGroupList){

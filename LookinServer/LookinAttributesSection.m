@@ -29,9 +29,14 @@
     if (self.attributes) {
         NSMutableArray *attrArray = [NSMutableArray array];
         for (LookinAttribute *attr in self.attributes) {
-            [attrArray addObject:[attr toJson]]; // 递归调用 toJson
+            NSDictionary * attrJson = [attr toJson];
+            if(!IsEmptyDict(attrJson)){
+                [attrArray addObject:[attr toJson]]; // 递归调用 toJson
+            }
         }
-        dict[@"attrArray"] = attrArray;
+        if(!IsEmptyArray(attrArray)){
+            dict[@"attrArray"] = attrArray;
+        }
     }
     
     return [dict copy];

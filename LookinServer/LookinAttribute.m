@@ -19,37 +19,20 @@
 - (NSDictionary *)toJson {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-    // if (self.identifier) {
-    //     dict[@"identifier"] = self.identifier;
-    // }
     if (self.displayTitle) {
         dict[@"displayTitle"] = self.displayTitle;
     }
-    // if (self.attrType) {
-    //     dict[@"attrType"] = self.attrType;
-    // }
-    // if (self.value) {
-    //     dict[@"value"] = self.value;
-    // }
-    // if (self.extraValue) {
-    //     dict[@"extraValue"] = self.extraValue;
-    // }
+
     [self setRealValue:dict];
     if (self.customSetterID) {
         dict[@"customSetterID"] = self.customSetterID;
     }
-    // if (self.ivarTraces) {
-    //     NSMutableArray *tracesArray = [NSMutableArray array];
-    //     for (LookinIvarTrace *trace in self.ivarTraces) {
-    //         [tracesArray addObject:[trace toJson]]; // 递归调用 toJson
-    //     }
-    //     dict[@"ivarTraces"] = tracesArray;
-    // }
+
     
     return [dict copy];
 }
 - (void)setRealValue:(NSMutableDictionary *)dict {
-    // TODO 部分类型未适配
+    // TODO 部分类型未适配 5, 12, 17, 20, 22, 26, 27, 28
     switch (self.attrType) {
         case LookinAttrTypeEnumString:
         case LookinAttrTypeNSString: {
@@ -64,6 +47,9 @@
             return;
         }
         case LookinAttrTypeBOOL: 
+        case LookinAttrTypeLong:
+        case LookinAttrTypeFloat:
+        case LookinAttrTypeEnumLong:
         case LookinAttrTypeDouble: {
             if (self.value) {
                 NSNumber *newValue = self.value;
@@ -76,7 +62,7 @@
             return;
         }      
         default:
-            // NSLog(@"***unMatch:%s",self.attrType);
+            NSLog(@"***unMatch:%ld",(long)self.attrType);
             return;
     }
 }
