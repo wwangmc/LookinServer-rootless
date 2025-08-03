@@ -19,9 +19,9 @@
 - (NSDictionary *)toJson {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-    if (self.identifier) {
-        dict[@"identifier"] = self.identifier;
-    }
+    // if (self.identifier) {
+    //     dict[@"identifier"] = self.identifier;
+    // }
     if (self.displayTitle) {
         dict[@"displayTitle"] = self.displayTitle;
     }
@@ -49,6 +49,7 @@
     return [dict copy];
 }
 - (void)setRealValue:(NSMutableDictionary *)dict {
+    // TODO 部分类型未适配
     switch (self.attrType) {
         case LookinAttrTypeEnumString:
         case LookinAttrTypeNSString: {
@@ -75,6 +76,7 @@
             return;
         }      
         default:
+            // NSLog(@"***unMatch:%s",self.attrType);
             return;
     }
 }

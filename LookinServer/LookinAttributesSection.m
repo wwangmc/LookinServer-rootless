@@ -21,9 +21,9 @@
 - (NSDictionary *)toJson {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-    if (self.identifier) {
-        dict[@"identifier"] = self.identifier;
-    }
+    // if (self.identifier) {
+    //     dict[@"identifier"] = self.identifier;
+    // }
 
     
     if (self.attributes) {
