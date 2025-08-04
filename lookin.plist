@@ -1,1 +1,1 @@
-{ Filter = { Bundles = ( "com.markuswu.MyIDFA" ); }; }
+{ Filter = { Bundles = ( "daily.easy.sudoku.puzzle.solver.free" ); }; }

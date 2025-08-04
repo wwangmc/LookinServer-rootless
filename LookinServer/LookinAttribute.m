@@ -46,23 +46,23 @@
             }
             return;
         }
-        case LookinAttrTypeBOOL: 
-        case LookinAttrTypeLong:
-        case LookinAttrTypeFloat:
-        case LookinAttrTypeEnumLong:
-        case LookinAttrTypeDouble: {
-            if (self.value) {
-                NSNumber *newValue = self.value;
-                dict[@"value"] = newValue;
-            }
-            if (self.extraValue) {
-                NSNumber *newValue = self.extraValue;
-                dict[@"extraValue"] = newValue;
-            }
-            return;
-        }      
+        // case LookinAttrTypeBOOL: 
+        // case LookinAttrTypeLong:
+        // case LookinAttrTypeFloat:
+        // case LookinAttrTypeEnumLong:
+        // case LookinAttrTypeDouble: {
+        //     if (self.value) {
+        //         NSNumber *newValue = self.value;
+        //         dict[@"value"] = newValue;
+        //     }
+        //     if (self.extraValue) {
+        //         NSNumber *newValue = self.extraValue;
+        //         dict[@"extraValue"] = newValue;
+        //     }
+        //     return;
+        // }      
         default:
-            NSLog(@"***unMatch:%ld",(long)self.attrType);
+            // NSLog(@"***unMatch:%ld",(long)self.attrType);
             return;
     }
 }

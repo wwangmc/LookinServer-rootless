@@ -56,14 +56,14 @@
             @"height": @(self.frame.size.height)
         };
     }
-    if (!CGRectIsEmpty(self.bounds)) {
-        dict[@"bounds"] = @{
-            @"x": @(self.bounds.origin.x),
-            @"y": @(self.bounds.origin.y),
-            @"width": @(self.bounds.size.width),
-            @"height": @(self.bounds.size.height)
-        };
-    }
+    // if (!CGRectIsEmpty(self.bounds)) {
+    //     dict[@"bounds"] = @{
+    //         @"x": @(self.bounds.origin.x),
+    //         @"y": @(self.bounds.origin.y),
+    //         @"width": @(self.bounds.size.width),
+    //         @"height": @(self.bounds.size.height)
+    //     };
+    // }
 
     if(self.viewObject){
         dict[@"viewObject"] = [self.viewObject toJson];
