@@ -23,6 +23,7 @@ extern NSString *const LookinIvarTraceRelationValue_Self;
 
 @property(nonatomic, copy) NSString *hostClassName;
 
+// 在其它类中被引用的实例名
 @property(nonatomic, copy) NSString *ivarName;
 
 #pragma mark - No Coding

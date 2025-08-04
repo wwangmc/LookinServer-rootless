@@ -37,7 +37,9 @@
     }
     // TODO
     if (self.classChainList) {
-        dict[@"classChainList"] = self.classChainList;
+        // dict[@"classChainList"] = self.classChainList;
+        // 获取类名 上面为 继承链
+        dict[@"className"] = [self rawClassName];
     }
     if (self.ivarTraces) {
         NSMutableArray *tracesArray = [NSMutableArray array];

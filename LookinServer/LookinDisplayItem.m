@@ -69,16 +69,13 @@
         dict[@"viewObject"] = [self.viewObject toJson];
     }
 
-    if(self.layerObject){
-        dict[@"layerObject"] = [self.layerObject toJson];
-    }
+    // if(self.layerObject){
+    //     dict[@"layerObject"] = [self.layerObject toJson];
+    // }
     if(self.hostViewControllerObject){
         dict[@"hostViewControllerObject"] = [self.hostViewControllerObject toJson];
     }
 
-    if(self.hostViewControllerObject){
-        dict[@"hostViewControllerObject"] = [self.hostViewControllerObject toJson];
-    }
     
     if(self.attributesGroupList){
         NSMutableArray *attrArray = [NSMutableArray array];
