@@ -13,7 +13,7 @@
         __block GCDWebServerDataResponse *finalResponse;
 
         // 2. 异步处理数据
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             // 2.1 获取数据
             LookinHierarchyInfo *info = [LookinHierarchyInfo staticInfoWithLookinVersion:@"1.0.9"];
             NSMutableArray *itemsArray = [NSMutableArray array];
